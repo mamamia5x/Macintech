@@ -1,9 +1,11 @@
 FROM gitpod/workspace-full
 
-RUN sudo apt-get install sox \
-&& sudo apt-get install python-pip \
-&& sudo pip install beautifulsoup4 \
-&& sudo pip install youtube-dl \
-&& sudo add-apt-repository ppa:heyarje/libav-11 \
-&& sudo apt-get update \
-&& sudo apt-get install libav-tools
+USER root
+
+RUN sudo apt-get install sox
+RUN sudo apt-get install python-pip
+RUN sudo pip install beautifulsoup4
+RUN sudo pip install youtube-dl
+RUN sudo add-apt-repository ppa:heyarje/libav-11
+RUN sudo apt-get update
+RUN sudo apt-get install libav-tools

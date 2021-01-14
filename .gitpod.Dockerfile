@@ -1,4 +1,4 @@
-FROM gitpod/workspace/Macintech
+FROM gitpod/workspace/macintech
 
 USER gitpod
 

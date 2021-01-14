@@ -148,25 +148,25 @@ class VaporSong:
 	@staticmethod
 	def vaporize_song(bandname,fname):
 		# Slow down sample by 30%
-		print "~Slowing down the music"
+		print ("~Slowing down the music")
 		VaporSong.slow_down(fname, 0.7, "beats/out.wav")
-		print "~Cropping"
+		print ("~Cropping")
 		VaporSong.random_crop("beats/out.wav",60,"beats/outcrop.wav")
-		print "~Doing Beat Analysis"
+		print ("~Doing Beat Analysis")
 		bm = VaporSong.fetchbeats("beats/outcrop.wav")
-		print "~Split into beats"
+		print ("~Split into beats")
 		splitd = VaporSong.split("beats/outcrop.wav",bm)
 		#group beats to sections
-		print "~Divide into sections"
+		print ("~Divide into sections")
 		sections = VaporSong.generate_sections(splitd)
-		print "~Duping Sections"
+		print ("~Duping Sections")
 		sdup = VaporSong.dup_sections(sections)
 		# group sections into passages
 		paslist = VaporSong.make_passages(sdup)
 		# reorder packages
 		pasloop = VaporSong.reorder_passages(paslist)
 		sectionflat = VaporSong.flatten(pasloop)
-		print "~Mastering & Reverbing"
+		print ("~Mastering & Reverbing")
 		VaporSong.combine(sectionflat,"beats/out_norev.wav")
 		os.system("mkdir " + bandname)
 		VaporSong.reverbize("beats/out_norev.wav",bandname+"/"+fname.split("/")[1]+".wav")

@@ -1,4 +1,5 @@
 import urllib
+import urllib.parse
 try:
     import urllib.request as urllib2
 except ImportError:
@@ -18,11 +19,11 @@ class YTDownloader:
 	@staticmethod
 	def fetch(textToSearch):
 		# All of this is stack overflow magic, lel
-		query = urllib.quote(textToSearch)
+		query = urllib.parse.quote(textToSearch)
 		url = "https://www.youtube.com/results?search_query=" + query
 		response = urllib2.urlopen(url)
 		html = response.read()
-		soup = BeautifulSoup(html)
+		soup = BeautifulSoup(html, "html.parser")
 		vids = []
 		for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
 		    vids.append('https://www.youtube.com' + vid['href'])

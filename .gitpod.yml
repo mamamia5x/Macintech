@@ -1,8 +1,2 @@
-tasks:
-  - command: sudo apt-get install sox
-  - command: sudo apt-get install python-pip
-  - command: sudo pip install beautifulsoup4
-  - command: sudo pip install youtube-dl
-  - command: sudo add-apt-repository ppa:heyarje/libav-11
-  - command: sudo apt-get update
-  - command: sudo apt-get install libav-tools
+image:
+  file: .github.Dockerfile

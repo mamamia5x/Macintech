@@ -1,6 +1,4 @@
-FROM gitpod/workspace/macintech
-
-USER gitpod
+FROM gitpod/workspace-full
 
 RUN sudo apt-get install sox
 RUN sudo apt-get install python-pip
